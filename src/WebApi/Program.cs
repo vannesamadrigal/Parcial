@@ -26,7 +26,8 @@ app.Use(async (ctx, next) =>
 app.MapGet("/health", () =>
 {
     Logger.Log("health ping");
-    var x = new Random().Next();
+    //se cambio por ramdom.share
+    var x = Random.Shared.Next();
     if (x % 13 == 0) throw new Exception("random failure"); // flaky!
     return "ok " + x;
 });

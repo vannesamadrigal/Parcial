@@ -12,7 +12,11 @@ public static class OrderService
     public static Order CreateTerribleOrder(string customer, string product, int qty, decimal price)
     {
         var o = new Order { 
-            Id = new Random().Next(1, 9999999), CustomerName = customer, ProductName = product, Quantity = qty, UnitPrice = price 
+            Id = Random.Shared.Next(1, 9999999),
+            CustomerName = customer,
+            ProductName = product,
+            Quantity = qty,
+            UnitPrice = price 
         };
         LastOrders.Add(o);
 
