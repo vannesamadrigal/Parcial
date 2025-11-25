@@ -1,3 +1,4 @@
+using Application.UseCases;
 using Infrastructure.Data;
 using Infrastructure.Logging;
 
@@ -5,7 +6,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Logging.ClearProviders();
 
-builder.Services.AddCors(o => o.AddPolicy("bad", p => p.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod()));
+builder.Services.AddCors(o => o.AddPolicy("bad",
+p => p.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod()));
 
 var app = builder.Build();
 
@@ -38,6 +40,7 @@ app.MapPost("/orders", (HttpContext http) =>
     var price = parts.Length > 3 ? decimal.Parse(parts[3]) : 0.99m;
 
     var uc = new CreateOrderUseCase();
+    
     var order = uc.Execute(customer, product, qty, price);
 
     return Results.Ok(order);

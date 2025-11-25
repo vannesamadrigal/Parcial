@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>disable</Nullable>
@@ -7,7 +7,6 @@
 
   <!-- BAD: Application knows about Web layer and Infrastructure (more violations) -->
   <ItemGroup>
-    <ProjectReference Include="..\WebApi\WebApi.csproj" />
-    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
+	  <ProjectReference Include="..\Domain\Domain.csproj" />
   </ItemGroup>
 </Project>
